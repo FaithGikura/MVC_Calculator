@@ -1,0 +1,39 @@
+﻿@model TipCalculator.Models.Meal
+@{
+    ViewBag.Title = "Tip Calculator";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>@ViewBag.Title</h1>
+
+        @if (!String.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+                <div class="error">@ViewBag.ErrorMessage</div>
+        }
+
+        <form method="post">
+            <div class="form-group">
+                <label for="Cost">Meal Cost:</label>
+                <input type="text" id="Cost" name="Cost" value="@Model?.Cost" />
+            </div>
+            <button type="submit">Calculate</button>
+            <a href="~/Home/Index" class="clear">Clear</a>
+        </form>
+
+        <div class="results">
+            <h2>Tip Amounts</h2>
+            <p>15%: $@ViewBag.Tip15</p>
+            <p>18%: $@ViewBag.Tip18</p>
+            <p>20%: $@ViewBag.Tip20</p>
+        </div>
+    </div>
+</body>
+</html>
